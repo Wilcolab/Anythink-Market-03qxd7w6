@@ -6,6 +6,12 @@ module.exports = {
     },
     "extends": "eslint:recommended",
     "overrides": [
+        {
+            "files": ["server.js", "api/**/*.js"],
+            "env": {
+                "node": true
+            }
+        }
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
