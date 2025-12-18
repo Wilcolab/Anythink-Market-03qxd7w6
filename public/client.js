@@ -258,3 +258,4 @@ function loadMoreFeedbacks() {
     currentFeedbackPage++;
     loadFeedbacks(currentFeedbackPage);
 }
+// Frontend connection verified for power operator
