@@ -33,6 +33,9 @@ function calculate(operand1, operand2, operation) {
         case '/':
             uri += "?operation=divide";
             break;
+        case '^':
+            uri += "?operation=power"; // Exponentiation operation
+            break;
         default:
             setError();
             return;
@@ -138,7 +141,7 @@ document.addEventListener('keypress', (event) => {
         numberPressed(event.key);
     } else if (event.key == '.') {
         decimalPressed();
-    } else if (event.key.match(/^[-*+/]$/)) {
+    } else if (event.key.match(/^[-*+/^]$/)) {
         operationPressed(event.key);
     } else if (event.key == '=') {
         equalPressed();
@@ -197,4 +200,61 @@ function setLoading(loading) {
     for (var i = 0; i < buttons.length; i++) {
         buttons[i].disabled = loading;
     }
+}
+
+function submitFeedback() {
+    var feedback = document.getElementById("feedback-text").value;
+    if (feedback.trim() === "") {
+        alert("Please enter some feedback.");
+        return;
+    }
+    // Send to server
+    fetch('/feedback', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ feedback: feedback })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message) {
+            alert("Thank you for your feedback!");
+            document.getElementById("feedback-text").value = "";
+            currentFeedbackPage = 1;
+            loadFeedbacks(); // Refresh the list
+        } else {
+            alert("Error: " + data.error);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert("Failed to submit feedback. Please try again.");
+    });
+}
+
+var currentFeedbackPage = 1;
+
+function loadFeedbacks(page = 1) {
+    fetch(`/feedback?page=${page}&limit=5`)
+    .then(response => response.json())
+    .then(data => {
+        const list = document.getElementById("feedback-list");
+        if (page === 1) {
+            list.innerHTML = "";
+        }
+        data.feedbacks.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = `${new Date(item.timestamp).toLocaleString()}: ${item.feedback}`;
+            list.appendChild(li);
+        });
+        // Hide load more if no more feedbacks
+        document.getElementById("load-more-btn").style.display = data.feedbacks.length < 5 ? 'none' : 'block';
+    })
+    .catch(error => console.error('Error loading feedbacks:', error));
+}
+
+function loadMoreFeedbacks() {
+    currentFeedbackPage++;
+    loadFeedbacks(currentFeedbackPage);
 }
