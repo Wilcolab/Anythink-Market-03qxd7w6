@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 
 // Connect to MongoDB (use environment variable for connection string)
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/calculator';

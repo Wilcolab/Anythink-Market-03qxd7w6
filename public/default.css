@@ -24,13 +24,13 @@ BODY {
 
 .container {
     min-width: 250px;
-    min-height: 531px;
+    min-height: 600px;
     width: 250px;
     padding: 25px;
     margin: 0 auto;
     position: relative;
     background-image: url(background.png);
-    background-size: 300px 531px;
+    background-size: 300px 600px;
     background-repeat: no-repeat;
     background-position: center top;
 }
