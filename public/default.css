@@ -184,3 +184,73 @@ BODY {
     background-color: #d5d5d5;
     margin: 4px;
 }
+
+#feedback {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#feedback h3 {
+    color: white;
+    font-size: 1.2em;
+}
+
+#feedback textarea {
+    width: 200px;
+    height: 60px;
+    margin: 10px 0;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#feedback button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#feedback button:hover {
+    background-color: #45a049;
+}
+
+#recent-feedbacks {
+    margin-top: 20px;
+}
+
+#recent-feedbacks h4 {
+    color: white;
+    font-size: 1em;
+}
+
+#feedback-list {
+    list-style-type: none;
+    padding: 0;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+#feedback-list li {
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 4px;
+    color: white;
+}
+
+#load-more-btn {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+#load-more-btn:hover {
+    background-color: #0b7dda;
+}

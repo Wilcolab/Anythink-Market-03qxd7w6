@@ -4,7 +4,7 @@
 
 <img width="400" alt="Node Calculator image" src="./assets/Node%20calculator%20image.png">
 
-The project contains a simple node.js application that exposes REST APIs to perform arithmetic on integers, and provides a test suite with mocha and chai.
+The project contains a simple node.js application that exposes REST APIs to perform arithmetic on integers (including addition, subtraction, multiplication, division, and exponentiation), and provides a test suite with mocha and chai.
 
 ## Instructions 
 
