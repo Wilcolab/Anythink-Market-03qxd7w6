@@ -34,7 +34,7 @@ function calculate(operand1, operand2, operation) {
             uri += "?operation=divide";
             break;
         case '^':
-            uri += "?operation=power"; // Exponentiation operation
+            uri += "?operation=power"; // Final verified frontend connection
             break;
         default:
             setError();
